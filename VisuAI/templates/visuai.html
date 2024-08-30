@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VisuAI Object Detection</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/visuai.css') }}"
+    />
+    <script
+      src="{{ url_for('static', filename='js/visuai.js') }}"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h1>Emergency Contacts</h1>
+    <form id="addContactForm">
+      <input type="text" id="contactName" placeholder="Contact Name" required />
+      <input type="tel" id="contactPhone" placeholder="Phone Number" required />
+      <button type="submit">Add Contact</button>
+    </form>
+    <ul id="contactList"></ul>
+    <button onclick="showEmergencyContacts()">Emergency Button</button>
+
+    <div class="container">
+      <h1>VisuAI Object Detection</h1>
+      <div id="camera-view">
+        <img
+          id="video"
+          src="{{ url_for('video_feed') }}"
+          alt="Live Video Feed"
+        />
+      </div>
+      <div id="input-area">
+        <input type="text" id="user-input" placeholder="Enter text..." />
+        <button id="submit-btn" onclick="handleInput()">Submit</button>
+      </div>
+      <div id="recognized-speech-container">
+        <p id="recognized-speech">You said:</p>
+      </div>
+
+      <div id="bottom-bar">
+        <button class="bar-button" onclick="resetFunction()">Reset</button>
+        <button class="bar-button" onclick="setFunction('audio')">Audio</button>
+        <button class="bar-button" onclick="captureImage()">
+          Capture Image
+        </button>
+        <button class="bar-button" onclick="setFunction('find')">
+          Find Object
+        </button>
+        <button class="bar-button" onclick="startSpeakCommand()">Speak</button>
+        <button class="bar-button" onclick="toggleBlindMode()">
+          Blind Person Mode
+        </button>
+      </div>
+      <div id="function-label"></div>
+      <div id="status-label">Waiting for command...</div>
+    </div>
+  </body>
+</html>
